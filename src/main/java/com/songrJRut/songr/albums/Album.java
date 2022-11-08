@@ -1,12 +1,22 @@
 package com.songrJRut.songr.albums;
 
-public class Album {
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
+@Entity
+public class Album {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    Long id;
     private String title;
     private String artist;
     private int songCount;
     private int lengthInSeconds;
     private String imageUrl;
+
+    public Album(){};
 
     public Album(String title, String artist, int songCount, int lengthInSeconds, String imageUrl) {
         this.title = title;

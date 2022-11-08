@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.sql.Array;
 
@@ -32,6 +33,11 @@ public class helloController {
         String albumString = testAlbumDumper();
 
         m.addAttribute("albumString", albumString);
+        return "albums/albums";
+    }
+
+    @PostMapping("/albums")
+    public String postAlbums(){
         return "albums/albums";
     }
 
