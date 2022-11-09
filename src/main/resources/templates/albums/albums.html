@@ -1,11 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Albums</title>
 </head>
 <body>
 <h1>Album Dump</h1>
-<p th:text="${albumString}"></p>
+<ul th:each="album : ${albums}">
+    <li th:text="'Artist: ' + ${album.artist}"></li>
+    <li th:text="'Title: ' + ${album.title}"></li>
+</ul>
+
+<form action="/albums" method="post">
+    <fieldset>
+        <legend>Add an Album</legend>
+        <label>Artist</label>
+        <input type="text" name="artist"/>
+        <label>Album Title</label>
+        <input type="text" name="title">
+        <input type="submit" value="Add Album">
+    </fieldset>
+</form>
+
 </body>
 </html>

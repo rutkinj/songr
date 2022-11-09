@@ -18,6 +18,13 @@ public class Album {
 
     public Album(){};
 
+    public Album(String artist, String title){
+        this.artist = artist;
+        this.title = title;
+        this.songCount = 1;
+        this.lengthInSeconds = 10;
+        this.imageUrl = "UhOh!";
+    }
     public Album(String title, String artist, int songCount, int lengthInSeconds, String imageUrl) {
         this.title = title;
         this.artist = artist;
