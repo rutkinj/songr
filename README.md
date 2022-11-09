@@ -1,6 +1,6 @@
 # songr
 
-A basic webapp made with java, spring, and thymeleaf. It's gonna do something with songs and playlists.
+A basic webapp made with java, spring, and thymeleaf. It displays album names and titles, with more album info to be added in the future.
 
 ## To run
 In your terminal, navigate to the project root. Run `./gradlew bootRun` to start app. In your browser, navigate to `localhost:8080/` and use the routes below to visit different pages.
@@ -17,4 +17,4 @@ Displays the string after `/capitalize/` in all caps
 
 `/albums`
 
-Currently, poorly displays info from three hardcoded album objects.
+Displays album info from db and allows the entry of new albums to that db
