@@ -1,7 +1,9 @@
 package com.songrJRut.songr.controllers;
 
 import com.songrJRut.songr.albums.Album;
+import com.songrJRut.songr.albums.Song;
 import com.songrJRut.songr.repository.AlbumRepository;
+import com.songrJRut.songr.repository.SongRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,6 +19,8 @@ import java.util.List;
 public class helloController {
     @Autowired
     AlbumRepository albumRepository;
+    @Autowired
+    SongRepository songRepository;
     @GetMapping("/")
     public String getSplash(){
         return "splash";
@@ -33,6 +37,8 @@ public class helloController {
         return "basic/caps";
     }
 
+// albums
+
     @GetMapping("/albums")
     public String getTestAlbums(Model m){
 
@@ -41,13 +47,30 @@ public class helloController {
         List<Album> allAlbums = albumRepository.findAll();
 
         m.addAttribute("albums", allAlbums);
-        return "albums/albums";
+        return "albums/albums.html";
     }
 
     @PostMapping("/albums")
     public RedirectView postAlbums(String artist, String title){
         Album newAlbum = new Album(artist, title);
         albumRepository.save(newAlbum);
+        return new RedirectView("/albums");
+    }
+
+// songs
+
+    @GetMapping("/songs")
+    public String getSongs(Model m){
+        List<Song> songs = songRepository.findAll();
+        m.addAttribute("songs", songs);
+        return "albums/albums.html";
+    }
+
+    @PostMapping("/songs")
+    public RedirectView postSong(String title, int length, int trackNum, String album){
+        Album gotAlbum = albumRepository.findByTitle(album);
+        Song newSong = new Song(title, length, trackNum, gotAlbum);
+        songRepository.save(newSong);
         return new RedirectView("/albums");
     }
 
