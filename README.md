@@ -18,3 +18,5 @@ Displays the string after `/capitalize/` in all caps
 `/albums`
 
 Displays album info from db and allows the entry of new albums to that db
+
+11/9 - adds functionality to add songs to specific albums

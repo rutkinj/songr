@@ -1,9 +1,8 @@
 package com.songrJRut.songr.albums;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.lang.reflect.Array;
+import java.util.List;
 
 @Entity
 public class Album {
@@ -13,6 +12,8 @@ public class Album {
     private String title;
     private String artist;
     private int songCount;
+
+    @OneToMany(mappedBy = "album") List<Song> songList;
     private int lengthInSeconds;
     private String imageUrl;
 
@@ -36,6 +37,12 @@ public class Album {
     public String albumString(){
         return getArtist() + getTitle() + getSongCount() + getLengthInSeconds() + getImageUrl();
     }
+
+    public List<Song> getSongList() {return songList;}
+
+    public void setSongList(List<Song> songList) {this.songList = songList;}
+
+    public Long getId() {return id;}
 
     public String getTitle() {
         return title;
